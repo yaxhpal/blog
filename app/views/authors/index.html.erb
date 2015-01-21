@@ -1,0 +1,16 @@
+<h1>Listing Author</h1>
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Email</th>
+  </tr>
+  <% @authors.each do |author| %>
+    <tr>
+      <td><%= author.name %></td>
+      <td><%= author.email %></td>
+    </tr>
+  <% end %>
+</table>
+
+<br>
+<%= link_to 'See all the Posts', controller: 'posts' %>
