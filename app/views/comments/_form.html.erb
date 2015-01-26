@@ -1,0 +1,14 @@
+<%= form_for [@post, @post.comments.build], html: { class: "form"} do |f| %>
+
+<div class="form-group">
+  <%= f.label :commenter, class: "sr-only"%>
+  <%= f.text_field :commenter, class: "form-control", placeholder:"Name"%> 
+</div>
+<div class="form-group">
+  <%= f.label :body, class: "sr-only"%>
+  <%= f.text_area :body, class: "form-control", placeholder:"Comment"%> 
+</div>
+<div class=" form-group text-right">
+  <%= f.submit "+", title: "Add", class: "btn btn-default glyphicon glyphicon-ok" %>
+</div>
+<% end %>

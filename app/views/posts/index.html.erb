@@ -1,25 +1,36 @@
-<h1>Listing Posts</h1>
 
-<table class="table">
- <tbody>
-  <tr>
-    <th>Title</th>
-    <th>Body</th>
-    <th>Author</th>
-    <th></th>
-  </tr>
- 
-  <% @posts.each do |post| %>
-    <tr>
-      <td><%= post.title %></td>
-      <td><%= post.body %></td>
-      <td><%= Author.find(post.author_id).name %></td>
-      <td><%= link_to Author.find(post.author_id).name, edit_author_path(post.author_id) %></td>
-    </tr>
-  <% end %>
-  </tbody>
-</table>
-
-<br>
-<br>
-<%= link_to 'New Post', new_post_path %>
+<div class="container">
+  <div class="panel panel-primary">
+    <div class="panel-heading">
+      <h3 class="panel-title">List of posts</h3>
+    </div>
+    <div class="panel-body">
+      <table class="table table-bordered">
+       <tbody>
+        <tr>
+          <th>Title</th>
+          <th>Body</th>
+          <th>Author</th>
+          <th></th>
+          <th></th>
+        </tr>
+        <% @posts.each do |post| %>
+        <tr>
+          <td><%= post.title %></td>
+          <td><%= post.body %></td>
+          <td><%= Author.find(post.author_id).name %></td>
+          <td>
+            <%= link_to "", post_path(post.id), class: "btn btn-default glyphicon glyphicon-edit" %>
+          </td>
+          <td>
+            <%= link_to "", post_path(post), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-default glyphicon glyphicon-trash" %>
+          </td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+  <div class="panel-footer text-right">
+    <%= link_to "", new_post_path, class: "btn btn-default glyphicon glyphicon-plus" %>
+  </div>
+</div>

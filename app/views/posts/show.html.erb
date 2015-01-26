@@ -1,19 +1,22 @@
-<p>
-  <strong>Title:</strong>
-  <%= @post.title %>
-</p>
- 
-<p>
-  <strong>Text:</strong>
-  <%= @post.body %>
-</p>
+<div class="container">
+  <div class="panel panel-primary">
+    <div class="panel-heading">
+      <h3 class="panel-title"><%= @post.title %></h3>
+    </div>
+    <div class="panel-body">
+      <blockquote>
+        <p><%= @post.body %></p>
+        <footer><cite title="Author"><%= @post.author.name %></cite></footer>
+      </blockquote>
+      <br><br><br><strong> Comments </strong><br><br>
+      <%= render @post.comments %>
 
-<p>
-  <strong>Author:</strong>
-  <%= Author.find(@post.author_id).name %>
-</p>
-
-<br>
-<br>
-
-<%= link_to 'Posts', controller: 'posts' %>
+      <br><br><strong>Add a comment: </strong><br><br>
+      <%= render 'comments/form' %>
+    </div>
+    <div class="panel-footer">
+      <%= link_to "", edit_post_path(@post), title: "Edit", class: "btn btn-default glyphicon glyphicon-pencil" %>
+      <%= link_to "", posts_path, title: "All posts", class: "btn btn-default glyphicon glyphicon-list" %>
+    </div>
+  </div>
+</div>
